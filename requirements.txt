@@ -1,0 +1,6 @@
+PyVisa
+PyQt5
+PyMySQL
+numpy
+ansys-corba
+PyDAQmx
