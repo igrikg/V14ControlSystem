@@ -79,8 +79,8 @@ class IsegNHQ:
     def set_ramp_speed(self, channel:int, value: int):
        self.send_command('V{channel}={value:03}'.format(channel=channel,value=value))
 
-    def set_voltage(self, channel:int, value: float):
-        self.send_command('D{channel}={value:06.1f}'.format(channel=channel,value=value))
+    def set_voltage(self, channel:int, value: int):
+        self.send_command('D{channel}={value:04}'.format(channel=channel,value=value))
 
     def set_current_trip(self, channel:int, value: int):
         self.send_command('L{channel}={value:04}'.format(channel=channel,value=value))
@@ -100,9 +100,11 @@ class IsegNHQ:
 
 if __name__=="__main__":
     a=IsegNHQ("COM7")
+    print(a.get_status(1))
+    print(a.get_status(1))
     print(a.get_identifier())
     print(a.get_meas_voltage(1))
-    #print(a.get_auto_start(1))
+    print(a.set_start_ramp(1))
     #print(a.get_status_module(1))
     #print(a.get_status(1))
     print(a.get_current_trip(1))
@@ -111,5 +113,8 @@ if __name__=="__main__":
     print(a.get_meas_current(1))
     print(a.get_ramp_speed(1))
     print(a.get_set_voltage(1))
+    print(a.set_voltage(1,100))
+    print(a.get_set_voltage(1))
+    print(a.get_meas_voltage(1))
 
 
