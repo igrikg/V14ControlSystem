@@ -1,10 +1,8 @@
-import ctypes
-
-# Load the DLL
+from ctypes import *
 from ctypes import byref
 
-eib7dll = ctypes.WinDLL("eib7.dll")
-
+mydll = cdll.LoadLibrary("C:\\Users\\igrik\\PycharmProjects\\V14ControlSystem\\EIB741\\eib7.dll")
+print(mydll.timeGetTime())
 # Call a function from the DLL
 text='192.168.8.27'
 ip=''
