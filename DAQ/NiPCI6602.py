@@ -1,5 +1,3 @@
-from PyDAQmx.DAQmxFunctions import *
-from PyDAQmx.DAQmxConstants import *
 
 class NiPci6602():
     """ Class to create a
@@ -9,15 +7,22 @@ class NiPci6602():
     def __init__(self, counter="Dev1/ctr0", reset=False):
         pass
 
-from PyDAQmx import Task
-import PyDAQmx
-import numpy as np
+import nidaqmx
+import pprint
 
 
-data = np.array([0,1,1,0,1,0,1,0], dtype=np.uint8)
+pp = pprint.PrettyPrinter(indent=4)
 
-task = Task()
-task.CreateDOChan("/Dev1/port0/line0:7","",PyDAQmx.DAQmx_Val_ChanForAllLines)
-task.StartTask()
-task.WriteDigitalLines(1,1,10.0,PyDAQmx.DAQmx_Val_GroupByChannel,data,None,None)
-task.StopTask()
+
+with nidaqmx.Task() as task:
+    task.ci_channels.add_ci_count_edges_chan("Dev1/ctr0")
+
+    task.start()
+
+    print('1 Channel 1 Sample Read: ')
+    data = task.read()
+    pp.pprint(data)
+
+    print('1 Channel N Samples Read: ')
+    data = task.read(number_of_samples_per_channel=8)
+    pp.pprint(data)

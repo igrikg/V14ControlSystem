@@ -5,3 +5,4 @@ numpy
 ansys-corba
 pyserial
 PyDAQmx
+nidaqmx
