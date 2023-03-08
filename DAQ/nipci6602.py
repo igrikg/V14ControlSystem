@@ -205,7 +205,7 @@ class NiPci6602DIO():
         """write all """
         self.__dataOutput=value
         self.__writeOutput()
-    def writeOneOut(self,channel,value:bool):
+    def writeOneOut(self,channel:int,value:bool):
         """write value to channel
             channel can be from 1 to 4
          """
