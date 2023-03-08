@@ -1,6 +1,10 @@
 import nidaqmx
-from nidaqmx.constants import AcquisitionType, Level, Signal,Edge,CountDirection,ExportAction, TriggerType,LineGrouping
+import loguru
+import threading
 import time
+from nidaqmx.constants import AcquisitionType, Level, Signal,Edge,CountDirection,ExportAction, TriggerType,LineGrouping
+
+
 
 SOURCE_LIST = ["PFI39","PFI35","PFI31","PFI27","PFI23","PFI19"]
 """
