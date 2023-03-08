@@ -6,3 +6,4 @@ ansys-corba
 pyserial
 PyDAQmx
 nidaqmx
+loguru
