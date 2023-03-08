@@ -117,8 +117,6 @@ class NiPci6602DAQ():
 
     def __readData(self):
         self.__data = list(map(lambda x: x.read(), self.inputTimeCounterTasksList))
-        #self.__data =[x for x in self.inputTimeCounterTasksList]
-
         self.__data.append(self.timeDownCounterTask.read())
         if self.__data[-1] == 4294967295:# end measurment
             self.__data[-1] = 0
@@ -130,7 +128,7 @@ class NiPci6602DAQ():
 
     def readData(self):
         self.__readDataWait()
-
+    def z
     def Stop(self):
         self.__stopCounting()
 
