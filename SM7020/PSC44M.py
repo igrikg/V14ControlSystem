@@ -2,7 +2,6 @@ import pyvisa
 import time
 
 class PSC44M:
-
     def __init__(self, address):
         self.address = address
         self.FSU = 1

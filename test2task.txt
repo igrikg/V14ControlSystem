@@ -1,0 +1,22 @@
+Question
+Welcome to the second coding exercise.
+
+Within ISIS, software development often takes the form of converting complex scientific ideas into software algorithms
+ which transform scientific data. For example, applying a filter to an image to remove noise and other artefacts,
+  treating data to correct for instrument calibration effects and even fitting models to a dataset in order to extract
+   answers about a sample.
+
+   For this test, we will ask you to work through a toy example so we can get an idea of your style and approach to
+    developing user-oriented code.
+
+Using C++/C or Python, implement a solution which uses the Brown-Conrady model for distortion to correct for barrel
+ (positive radial) distortion in an input image. Although not required, a test-driven approach to development would be
+  highly favoured. Please see the resources located in the following Dropbox folder which shows the simplified
+   Brown-Conrady equation and images which show an example of what a distorted and corrected image look like.
+
+https://www.dropbox.com/sh/6mry0xrbbqij6al/AADX6MYw8Bksmc36iEcCwZnGa?dl=0
+
+For the purpose of this exercise you are not required to write a file loader/saver to load/save image data. You only
+need to demonstrate how to implement an algorithm which will apply the Brown-Conrady correction.
+ As a hint, your first step may be to create a sensible interface which represents inputs, outputs and
+  action of your algorithm.
