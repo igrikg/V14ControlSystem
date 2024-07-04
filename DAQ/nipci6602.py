@@ -1,8 +1,9 @@
 import nidaqmx
-import loguru
+#import loguru
 import threading
 import time
-from nidaqmx.constants import AcquisitionType, Level, Signal,Edge,CountDirection,ExportAction, TriggerType,LineGrouping
+from nidaqmx.constants import AcquisitionType, Level, Signal, Edge, CountDirection, \
+    ExportAction, TriggerType, LineGrouping
 
 
 
@@ -126,9 +127,12 @@ class NiPci6602DAQ():
         while self.WORK:
             self.__readData()
 
+    def readDataNow(self):
+        self.__readData()
+
     def readData(self):
         self.__readDataWait()
-    def z
+
     def Stop(self):
         self.__stopCounting()
 
@@ -189,19 +193,19 @@ class NiPci6602DIO():
 
     def __init_input(self):
         self.__inputTask.di_channels.add_di_chan(
-            "{:}/port0/line4:7".format(self.__device), line_grouping=LineGrouping.CHAN_PER_LINE)
+            "{:}/port0/line0:3".format(self.__device), line_grouping=LineGrouping.CHAN_PER_LINE)
         self.__inputTask.start()
 
     def __init_output(self):
         self.__outputTask.do_channels.add_do_chan(
-            "{:}/port0/line0:3".format(self.__device), line_grouping=LineGrouping.CHAN_PER_LINE)
+            "{:}/port0/line4:7".format(self.__device), line_grouping=LineGrouping.CHAN_PER_LINE)
         self.__outputTask.start()
 
     def __readInput(self):
-        self.__dataInput=self.__inputTask.read()[::-1]
+        self.__dataInput=self.__inputTask.read()
 
     def __writeOutput(self):
-        self.__outputTask.write(self.__dataOutput[::-1])
+        self.__outputTask.write(self.__dataOutput)
 
     def writeAll(self,value:list):
         """write all """
@@ -230,24 +234,27 @@ class NiPci6602DIO():
 
 
 if __name__ == "__main__":
-    a = NiPci6602DAQ()
-    a.startMeasurmentForTimeMs(15000)
+    # a = NiPci6602DAQ('Dev2')
+    # a.startMeasurmentForTimeMs(15000)
     #a.startMeasurmentForCounts(3000,5)
     b = NiPci6602DIO()
     print(b.dataInput)
-    b.dataOutput=[False, False, True, False]
+    b.dataOutput=[True, True, False, False]
     print(b.dataInput)
     b.dataOutput = [False, False, False, False]
     print(b.dataInput)
 
-    #b.writeOneOut(3,True)
+    b.writeOneOut(2, True)
     #b.readData()
     print(b.dataInput)
-    time.sleep(2)
-    a.readData()
 
-    print(a.data)
-    print(a.WORK)
-    a.Stop()
+    b.dataOutput = [False, False, False, False]
+    print(b.dataInput)
+    # time.sleep(2)
+    # a.readData()
+    #
+    # print(a.data)
+    # print(a.WORK)
+    # a.Stop()
 
 

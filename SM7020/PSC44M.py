@@ -62,6 +62,7 @@ class PSC44M:
             if res[:2] == 'MB': break
         res = int(res.split()[1])/4095*self.FSU
         return res
+
     def get_voltage_in_step(self):
         for _ in range(3):
             res = self.__repeatquarty('MA?')
@@ -96,24 +97,25 @@ if __name__=="__main__":
     indtrumentname='GPIB0::8::INSTR'
 
     a=PSC44M(indtrumentname)
+    print(a.get_errors())
     print(a.identify())
     a.set_limit(72,20)
     print(a.get_errors())
-    print(a.get_set_voltage_current())
-    a.set_voltage_in_step(1000)
-    a.set_current_in_step(100)
-    print(a.get_set_voltage_current())
-
-    print(a.get_voltage())
-    print(a.get_current())
-    print(a.set_voltage(10))
-    print(a.get_errors())
-    print(a.set_current(1))
-    print(a.get_errors())
-    print(a.get_voltage())
-    print(a.get_current())
-    print(a.get_set_voltage_current())
-    print(a.get_set_voltage_current())
-    print(a.get_set_voltage_current())
-    print(a.get_voltage())
-    print(a.get_current())
+    # print(a.get_set_voltage_current())
+    # a.set_voltage_in_step(1000)
+    # a.set_current_in_step(100)
+    # print(a.get_set_voltage_current())
+    #
+    # print(a.get_voltage())
+    # print(a.get_current())
+    # print(a.set_voltage(10))
+    # print(a.get_errors())
+    # print(a.set_current(1))
+    # print(a.get_errors())
+    # print(a.get_voltage())
+    # print(a.get_current())
+    # print(a.get_set_voltage_current())
+    # print(a.get_set_voltage_current())
+    # print(a.get_set_voltage_current())
+    # print(a.get_voltage())
+    # print(a.get_current())
